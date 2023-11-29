@@ -30,7 +30,7 @@ public class TeamRentalController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Set<TeamResponse>> getAllTeams() {
         Set<Team> teams = getTeamUseCase.getAllTeams();
-        return ResponseMapper.mapToTeamResponse(teams, HttpStatus.OK);
+        return ResponseMapper.mapToTeamResponse(teams);
     }
 
     @GetMapping("/{memberId}/rentals")
@@ -40,7 +40,7 @@ public class TeamRentalController {
                 .memberId(memberId)
                 .build();
         Set<Team> teams = getRentTeamUseCase.getRentTeamByMemberId(query);
-        return ResponseMapper.mapToTeamResponse(teams, HttpStatus.OK);
+        return ResponseMapper.mapToTeamResponse(teams);
     }
 
     @GetMapping("/{teamId}")
@@ -50,7 +50,7 @@ public class TeamRentalController {
                 .teamId(teamId)
                 .build();
         Team team = getTeamUseCase.getTeamById(query);
-        return ResponseMapper.mapToTeamResponse(team, HttpStatus.OK);
+        return ResponseMapper.mapToTeamResponse(team);
     }
 
     @PostMapping("/{teamSiteId}/{siteNumber}/rentals")

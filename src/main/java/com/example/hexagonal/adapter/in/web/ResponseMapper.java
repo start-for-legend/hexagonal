@@ -12,15 +12,15 @@ import java.util.stream.Collectors;
 @Component
 public class ResponseMapper {
 
-    static ResponseEntity<Set<TeamResponse>> mapToTeamResponse(Set<Team> team, HttpStatus status) {
+    static ResponseEntity<Set<TeamResponse>> mapToTeamResponse(Set<Team> team) {
         Set<TeamResponse> response = team.stream()
                 .map(TeamResponse::fromEntity)
                 .collect(Collectors.toSet());
-        return new ResponseEntity<>(response, status);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    static ResponseEntity<TeamResponse> mapToTeamResponse(Team team, HttpStatus status) {
+    static ResponseEntity<TeamResponse> mapToTeamResponse(Team team) {
         TeamResponse response = TeamResponse.fromEntity(team);
-        return new ResponseEntity<>(response, status);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
